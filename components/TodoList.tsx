@@ -1,17 +1,14 @@
+"use client";
 import React from "react";
-import { Todo } from "./Modal";
-interface Props {
-  todos: Todo[];
-  setTodos: (value: React.SetStateAction<Todo[]>) => void;
-}
-const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
-  return (
-    <ul className="flex justify-start text-start align-baseline flex-col gap-4 py-10">
-      {todos.map((t) => (
-        <li className="text-3xl">{t.todo}</li>
-      ))}
-    </ul>
-  );
+
+const TodoList = () => {
+  const makeACall = async () => {
+    await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify({ hello: "world" }),
+    });
+  };
+  return <button onClick={makeACall}>make a call</button>;
 };
 
 export default TodoList;
